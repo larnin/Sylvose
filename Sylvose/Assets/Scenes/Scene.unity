@@ -206,7 +206,7 @@ MonoBehaviour:
   groundDistanceDetection: 0.1
   maxSpeed: 5
   acceleration: 50
-  jumpVelocity: 10
+  jumpVelocity: 8
   groundLayer:
     serializedVersion: 2
     m_Bits: 256
