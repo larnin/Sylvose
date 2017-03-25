@@ -39,7 +39,7 @@ public class Contaminable : MonoBehaviour
 
     public ContaminationLevel IsContamined()
     {
-        ContaminationLevel level = ContaminationLevel.CONTAMINED;
+        ContaminationLevel level = ContaminationLevel.UNCONTAMINED;
 
         foreach (ContaminationLevel value in Enum.GetValues(typeof(ContaminationLevel)))
         {
