@@ -13,6 +13,10 @@ public class PlayerComportement : MonoBehaviour
     public float attackOffset = 1.0f;
     public GameObject attackPrefab;
     public GameObject contaminer;
+    public GameObject plantPrefab;
+    public float plantRange = 2.0f;
+    public float plantRadius = 2.0f;
+    public float growSpeed = 1.0f;
 
     Rigidbody2D _rigidbody;
     BoxCollider2D _collider;
@@ -70,6 +74,9 @@ public class PlayerComportement : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
             Contamine();
 
+        if (Input.GetButton("Fire3"))
+            GrowPlant();
+
     }
 
     void Attack()
@@ -82,5 +89,40 @@ public class PlayerComportement : MonoBehaviour
     {
         var contamineObj = Instantiate(contaminer);
         contamineObj.transform.position = transform.position;
+    }
+
+    void GrowPlant()
+    {
+        var objects = Physics2D.OverlapCircleAll(transform.position + new Vector3(_moveLeft ? -plantRange : plantRange, 0, 0), plantRadius);
+        bool foundPlant = false;
+        foreach(var o in objects)
+        {
+            var comp = o.GetComponent<Plant>();
+            if (comp == null)
+                continue;
+            foundPlant = true;
+            comp.Grow(Time.deltaTime * growSpeed);
+            break;
+        }
+        if (foundPlant)
+            return;
+        var grounds = Physics2D.RaycastAll(transform.position + new Vector3(_moveLeft ? -plantRange : plantRange, 0, 0), new Vector2(0, -plantRadius), groundLayer);
+        if (grounds.Length == 0)
+            return;
+        Vector3 pos = transform.position;
+        float dist = plantRadius;
+        bool ok = false;
+        foreach(var g in grounds)
+        {
+            if (g.distance < dist)
+            {
+                pos = g.point;
+                ok = true;
+            }
+        }
+        if (!ok)
+            return;
+        var plant = Instantiate(plantPrefab);
+        plant.transform.position = pos;
     }
 }

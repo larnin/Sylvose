@@ -143,7 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   uncontaminedColor: {r: 0.052984435, g: 0.7205882, b: 0.08521348, a: 1}
-  contaminedColor: {r: 0.62430066, g: 0.08401815, b: 0.8161765, a: 0}
+  contaminedColor: {r: 0.62430066, g: 0.08401815, b: 0.8161765, a: 1}
 --- !u!114 &114999090671979346
 MonoBehaviour:
   m_ObjectHideFlags: 1
