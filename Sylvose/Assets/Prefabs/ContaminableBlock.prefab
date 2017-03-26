@@ -81,8 +81,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d428eb8571f8d948ae35f3deea40f14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  contaminationRadius: 1
-  spreadPower: 1
+  contaminationRadius: 0.5
+  spreadPower: 10
   contaminationResistance: 1
 --- !u!212 &212323633582565042
 SpriteRenderer:

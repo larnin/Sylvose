@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   radius: 1
   time: 0.2
-  power: 5
+  power: 20
 --- !u!212 &212544130560407558
 SpriteRenderer:
   m_ObjectHideFlags: 1

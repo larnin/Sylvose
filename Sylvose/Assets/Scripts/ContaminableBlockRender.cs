@@ -8,10 +8,10 @@ public class ContaminableBlockRender : MonoBehaviour
     public Color uncontaminedColor;
     public Color contaminedColor;
 
-    Contaminable _contaminable;
-    SpriteRenderer _renderer;
+    protected Contaminable _contaminable;
+    protected SpriteRenderer _renderer;
 
-	void Start ()
+	protected virtual void Start ()
     {
         _contaminable = GetComponent<Contaminable>();
         _renderer = GetComponent<SpriteRenderer>();
