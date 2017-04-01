@@ -64,7 +64,7 @@ public class PlayerComportement : MonoBehaviour
         
         _rigidbody.velocity = new Vector2(_currentSpeed, _rigidbody.velocity.y);
 
-        _grounded = Physics2D.BoxCast(transform.position, _collider.size, 0, new Vector2(0, -1), groundDistanceDetection, groundLayer).collider != null;
+        _grounded = Physics2D.BoxCast(_collider.bounds.center, _collider.size, 0, new Vector2(0, -1), groundDistanceDetection, groundLayer).collider != null;
 
         if (_grounded && Input.GetButtonDown("Jump"))
             _rigidbody.velocity = new Vector2(_rigidbody.velocity.y, jumpVelocity);

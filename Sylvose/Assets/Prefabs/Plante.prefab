@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4641133221663772}
   - component: {fileID: 114940161423280720}
   - component: {fileID: 61523703983059134}
-  - component: {fileID: 114243085036587984}
+  - component: {fileID: 114999090671979346}
   m_Layer: 0
   m_Name: Plante
   m_TagString: Untagged
@@ -142,11 +142,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 106f31eaf1a2bfb4cabdf611fe6ced63, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uncontaminedColor: {r: 0.052984435, g: 0.7205882, b: 0.08521348, a: 1}
-  contaminedColor: {r: 0.73793125, g: 0, b: 1, a: 1}
+  contaminationRadius: 1
+  spreadPower: 1
+  contaminationResistance: 1
+  contaminationLevel: 0
 --- !u!114 &114999090671979346
 MonoBehaviour:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1251267863942984}

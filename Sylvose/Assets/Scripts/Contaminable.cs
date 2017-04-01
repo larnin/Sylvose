@@ -12,8 +12,10 @@ public class Contaminable : MonoBehaviour
     [Range(0.01f, 100.0f)]
     [Tooltip("La résistance de cet élément à la contamination (doubler cette valeur double la résistance).")]
     public float contaminationResistance = 1.0f;
+    [Tooltip("Le niveau de contamination de l'objet à son instantiation (entre 0 et 100)")]
+    public float contaminationLevel = 0;
 
-    float _contaminationLevel = 0;
+    protected Coroutine _contaminationCoroutine;
 
     public enum ContaminationLevel
     {
@@ -24,7 +26,7 @@ public class Contaminable : MonoBehaviour
         CONTAMINED = 100
     }
 
-    void Start()
+    protected virtual void Start()
     {
         if (IsContamined() == ContaminationLevel.CONTAMINED)
         {
@@ -48,14 +50,15 @@ public class Contaminable : MonoBehaviour
 
     public void Contamine(float value)
     {
-        if (IsContamined() == ContaminationLevel.CONTAMINED)
+        if (IsContamined() == ContaminationLevel.CONTAMINED && Mathf.Sign(value) > 0)
             return;
 
-        _contaminationLevel += value / contaminationResistance;
-        if(IsContamined() == ContaminationLevel.CONTAMINED)
+        contaminationLevel += value / contaminationResistance;
+        if (IsContamined() == ContaminationLevel.CONTAMINED)
         {
-            _contaminationLevel = (int)ContaminationLevel.CONTAMINED;
-            StartCoroutine(ContamineCoroutine());
+            contaminationLevel = (int)ContaminationLevel.CONTAMINED;
+            if (_contaminationCoroutine == null)
+                _contaminationCoroutine = StartCoroutine(ContamineCoroutine());
         }
     }
 
@@ -74,10 +77,10 @@ public class Contaminable : MonoBehaviour
 
     public float ContaminationProportion()
     {
-        return _contaminationLevel / ((int)ContaminationLevel.CONTAMINED - (int)ContaminationLevel.UNCONTAMINED);
+        return contaminationLevel / ((int)ContaminationLevel.CONTAMINED - (int)ContaminationLevel.UNCONTAMINED);
     }
 
-    IEnumerator ContamineCoroutine()
+    protected virtual IEnumerator ContamineCoroutine()
     {
         while (IsContamined() == ContaminationLevel.CONTAMINED)
         {
@@ -95,38 +98,10 @@ public class Contaminable : MonoBehaviour
         }
     }
 }
-{
-    [Tooltip("Le rayon de propagation lorsque cet élément est contaminé.")]
-    public float contaminationRadius = 1.0f;
-    [Tooltip("La puissance de contamination lorsque cet élément est contaminé.")]
-    public float spreadPower = 1.0f;
-    [Range(0.01f, 100.0f)]
-    [Tooltip("La résistance de cet élément à la contamination (doubler cette valeur double la résistance).")]
-    public float contaminationResistance = 1.0f;
-    [Tooltip("Le niveau de contamination de l'objet à son instantiation (entre 0 et 100)")]
-    public float contaminationLevel = 0;
-
-    protected Coroutine _contaminationCoroutine;
 
 
-    protected virtual void Start()
-    {
-        if(IsContamined() == ContaminationLevel.CONTAMINED)
-        {
-            contaminationLevel = (int)ContaminationLevel.CONTAMINED;
-            _contaminationCoroutine = StartCoroutine(ContamineCoroutine());
-        }
-    }
 
-        if (IsContamined() == ContaminationLevel.CONTAMINED && Mathf.Sign(value) > 0)
-            return;
+    
 
-            contaminationLevel += value / contaminationResistance;
-        if(IsContamined() == ContaminationLevel.CONTAMINED)
-            contaminationLevel = (int)ContaminationLevel.CONTAMINED;
-            if(_contaminationCoroutine == null)
-                _contaminationCoroutine = StartCoroutine(ContamineCoroutine());
-        return contaminationLevel / ((int)ContaminationLevel.CONTAMINED - (int)ContaminationLevel.UNCONTAMINED);
-    }
 
-    protected virtual IEnumerator ContamineCoroutine()
+    

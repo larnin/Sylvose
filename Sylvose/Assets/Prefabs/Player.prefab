@@ -99,6 +99,8 @@ MonoBehaviour:
   attackPrefab: {fileID: 1000983986707124, guid: 0b42543cddb60ab43b1296497ebecf36,
     type: 2}
   contaminer: {fileID: 1437352673357844, guid: baed0cd4a65e4034c8e9585ebb428ecc, type: 2}
+  decontaminer: {fileID: 1437352673357844, guid: 6903d69aefff3e546aa05c9416db9a80,
+    type: 2}
   plantPrefab: {fileID: 1251267863942984, guid: 40f0e12a67cb62847b81489da65760d4,
     type: 2}
   plantRange: 2
@@ -135,7 +137,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 10
-  m_Sprite: {fileID: 21300000, guid: 8560b9d5933498740adddcbbc18aff70, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 85f46400ab4d56e428c98bcf95dc15b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
