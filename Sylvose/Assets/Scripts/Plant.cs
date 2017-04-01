@@ -19,9 +19,9 @@ public class Plant : MonoBehaviour
 	void Start ()
     {
         _contaminable = GetComponent<Contaminable>();
-        _tige = transform.GetChild(0).gameObject;
+        _tige = transform.GetChild(1).gameObject;
         _tigeRenderer = _tige.GetComponent<SpriteRenderer>();
-        _plateform = transform.GetChild(1).gameObject;
+        _plateform = transform.GetChild(0).gameObject;
         _plateformRenderer = _plateform.GetComponent<SpriteRenderer>();
         _box = GetComponent<BoxCollider2D>();
 
@@ -41,10 +41,10 @@ public class Plant : MonoBehaviour
         float width = 2 * Mathf.Sqrt(_height);
 
         _tige.transform.localScale = new Vector3(_tige.transform.localScale.x, _height, _tige.transform.localScale.z);
-        _tige.transform.position = new Vector3(_tige.transform.position.x, transform.position.y + _height/2, _tige.transform.position.z);
-        _plateform.transform.localScale = new Vector3(width, _plateform.transform.localScale.y, _plateform.transform.localScale.z);
-        _plateform.transform.position = transform.position + new Vector3(0, _height, 0);
-        _box.size = new Vector2(width+0.05f, _height+0.05f);
+		_tige.transform.position = new Vector3(_tige.transform.position.x, transform.position.y + _height*1.5f, _tige.transform.position.z);
+        _plateform.transform.localScale = new Vector3(width/2, _plateform.transform.localScale.y, _plateform.transform.localScale.z);
+        _plateform.transform.position = transform.position + new Vector3(0, _height*3, 0);
+		_box.size = new Vector2(width+0.05f, _height+0.05f);
         _box.offset = new Vector2(0, _box.size.y / 2);
     }
 }

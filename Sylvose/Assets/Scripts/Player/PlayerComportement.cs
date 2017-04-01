@@ -13,6 +13,7 @@ public class PlayerComportement : MonoBehaviour
     public float attackOffset = 1.0f;
     public GameObject attackPrefab;
     public GameObject contaminer;
+	public GameObject decontaminer;
     public GameObject plantPrefab;
     public float plantRange = 2.0f;
     public float plantRadius = 2.0f;
@@ -74,6 +75,9 @@ public class PlayerComportement : MonoBehaviour
         if (Input.GetButtonDown("Fire2"))
             Contamine();
 
+		if (Input.GetKeyDown("e"))
+			Decontamine();
+
         if (Input.GetButton("Fire3"))
             GrowPlant();
 
@@ -90,6 +94,12 @@ public class PlayerComportement : MonoBehaviour
         var contamineObj = Instantiate(contaminer);
         contamineObj.transform.position = transform.position;
     }
+
+	void Decontamine()
+	{
+		var contamineObj = Instantiate(decontaminer);
+		contamineObj.transform.position = transform.position;
+	}
 
     void GrowPlant()
     {
