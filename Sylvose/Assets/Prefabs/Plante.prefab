@@ -19,9 +19,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4641133221663772}
-  - component: {fileID: 114999090671979346}
   - component: {fileID: 114940161423280720}
   - component: {fileID: 61523703983059134}
+  - component: {fileID: 114243085036587984}
   m_Layer: 0
   m_Name: Plante
   m_TagString: Untagged
@@ -131,6 +131,21 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
+--- !u!114 &114243085036587984
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1251267863942984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 106f31eaf1a2bfb4cabdf611fe6ced63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  contaminationRadius: 0.5
+  spreadPower: 10
+  contaminationResistance: 1
+  contaminationLevel: 0
 --- !u!114 &114940161423280720
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,20 +159,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   uncontaminedColor: {r: 0.052984435, g: 0.7205882, b: 0.08521348, a: 1}
   contaminedColor: {r: 0.62430066, g: 0.08401815, b: 0.8161765, a: 1}
---- !u!114 &114999090671979346
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1251267863942984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d428eb8571f8d948ae35f3deea40f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contaminationRadius: 1
-  spreadPower: 1
-  contaminationResistance: 1
 --- !u!212 &212898974232275290
 SpriteRenderer:
   m_ObjectHideFlags: 1

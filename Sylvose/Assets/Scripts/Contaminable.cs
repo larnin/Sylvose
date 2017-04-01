@@ -12,8 +12,10 @@ public class Contaminable : MonoBehaviour
     [Range(0.01f, 100.0f)]
     [Tooltip("La résistance de cet élément à la contamination (doubler cette valeur double la résistance).")]
     public float contaminationResistance = 1.0f;
+    [Tooltip("Le niveau de contamination de l'objet à son instantiation (entre 0 et 100)")]
+    public float contaminationLevel = 0;
 
-    float _contaminationLevel = 0;
+    protected Coroutine _contaminationCoroutine;
 
     public enum ContaminationLevel
     {
@@ -24,16 +26,26 @@ public class Contaminable : MonoBehaviour
         CONTAMINED = 100
     }
 
-    public void Contamine(float value)
+    protected virtual void Start()
     {
-        if (IsContamined() == ContaminationLevel.CONTAMINED)
-            return;
-
-        _contaminationLevel += value / contaminationResistance;
         if(IsContamined() == ContaminationLevel.CONTAMINED)
         {
-            _contaminationLevel = (int)ContaminationLevel.CONTAMINED;
-            StartCoroutine(ContamineCoroutine());
+            contaminationLevel = (int)ContaminationLevel.CONTAMINED;
+            _contaminationCoroutine = StartCoroutine(ContamineCoroutine());
+        }
+    }
+
+    public void Contamine(float value)
+    {
+        if (IsContamined() == ContaminationLevel.CONTAMINED && Mathf.Sign(value) > 0)
+            return;
+
+            contaminationLevel += value / contaminationResistance;
+        if(IsContamined() == ContaminationLevel.CONTAMINED)
+        {
+            contaminationLevel = (int)ContaminationLevel.CONTAMINED;
+            if(_contaminationCoroutine == null)
+                _contaminationCoroutine = StartCoroutine(ContamineCoroutine());
         }
     }
 
@@ -43,7 +55,7 @@ public class Contaminable : MonoBehaviour
 
         foreach (ContaminationLevel value in Enum.GetValues(typeof(ContaminationLevel)))
         {
-            if (value > level && (int)value <= _contaminationLevel)
+            if (value > level && (int)value <= contaminationLevel)
                 level = value;
         }
 
@@ -52,12 +64,12 @@ public class Contaminable : MonoBehaviour
 
     public float ContaminationProportion()
     {
-        return _contaminationLevel / ((int)ContaminationLevel.CONTAMINED - (int)ContaminationLevel.UNCONTAMINED);
+        return contaminationLevel / ((int)ContaminationLevel.CONTAMINED - (int)ContaminationLevel.UNCONTAMINED);
     }
 
-    IEnumerator ContamineCoroutine()
+    protected virtual IEnumerator ContamineCoroutine()
     {
-        while(IsContamined() == ContaminationLevel.CONTAMINED)
+        while (IsContamined() == ContaminationLevel.CONTAMINED)
         {
             float value = spreadPower * Time.deltaTime;
             var objects = Physics2D.OverlapCircleAll(transform.position, contaminationRadius);
