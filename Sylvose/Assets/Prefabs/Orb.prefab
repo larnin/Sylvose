@@ -26,7 +26,7 @@ GameObject:
   - component: {fileID: 50367788697467308}
   m_Layer: 0
   m_Name: Orb
-  m_TagString: Untagged
+  m_TagString: Orb
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1386829242928622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.2, y: -0.21, z: 0}
+  m_LocalPosition: {x: -4.96, y: -0.1, z: 0}
   m_LocalScale: {x: 0.7, y: 0.7, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -92,7 +92,7 @@ MonoBehaviour:
   contaminationRadius: 0
   spreadPower: 0
   contaminationResistance: 1
-  contaminationLevel: 0
+  contaminationLevel: 100
 --- !u!114 &114316659958064696
 MonoBehaviour:
   m_ObjectHideFlags: 1

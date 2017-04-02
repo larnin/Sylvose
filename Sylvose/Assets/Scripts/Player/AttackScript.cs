@@ -5,7 +5,10 @@ using UnityEngine;
 public class AttackScript : MonoBehaviour
 {
     public float radius = 2.0f;
-    public float time = 0.2f;
+    public float time = 0.3f;
+
+    //Ne pas detruire les orbres
+    public GameObject orb;
 
     float _life = 0.0f;
 
@@ -19,11 +22,13 @@ public class AttackScript : MonoBehaviour
         var objects = Physics2D.OverlapCircleAll(transform.position, radius);
         foreach (var o in objects)
         {
+            var tag = o.gameObject.tag; //
             var contamineCompent = o.gameObject.GetComponent<Contaminable>();
             if (contamineCompent == null)
                 continue;
-            if(contamineCompent.IsContamined() == Contaminable.ContaminationLevel.CONTAMINED)
+            if (contamineCompent.IsContamined() == Contaminable.ContaminationLevel.CONTAMINED && tag != "Orb")
                 Destroy(o.gameObject);
+
         }
 
         _life += Time.deltaTime;

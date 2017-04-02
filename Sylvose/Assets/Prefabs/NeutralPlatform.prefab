@@ -21,10 +21,8 @@ GameObject:
   - component: {fileID: 4885249759673046}
   - component: {fileID: 212323633582565042}
   - component: {fileID: 61679528665243256}
-  - component: {fileID: 114863363429637740}
-  - component: {fileID: 114327306641493180}
   m_Layer: 8
-  m_Name: ContaminablePlatform
+  m_Name: NeutralPlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -57,34 +55,6 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
---- !u!114 &114327306641493180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543392138771214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5ba6c5fdd5989ec4780ec51de0c2c116, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uncontaminedColor: {r: 0.071150504, g: 0.6911765, b: 0.15239537, a: 1}
-  contaminedColor: {r: 0.44492882, g: 0, b: 0.60294116, a: 1}
---- !u!114 &114863363429637740
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1543392138771214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d428eb8571f8d948ae35f3deea40f14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  contaminationRadius: 2
-  spreadPower: 50
-  contaminationResistance: 1
-  contaminationLevel: 0
 --- !u!212 &212323633582565042
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -116,7 +86,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2d3726b4b7b5a744f812d0956f4d67d4, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d1dc9bb38e2a2f1498f522f7669068a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
